@@ -1,0 +1,27 @@
+<?xml version = "1.0"?>
+<?dialogue-tree 1.0?>
+
+<document xmlns:ref="http://arct.io/xml">
+  
+  <DialogueTree name="dialogue switching" entity="test">
+    <Participant name="p" />
+    <Dialogue name="2">
+      <Text text="this is dialogue 2, does it work?">
+        <ParticipantReference ref:participant="p" />
+      </Text>
+      <ExitAction />
+    </Dialogue>
+    <EntryDialogue>
+      <Text text="this is the entry dialogue, if it doesnt work, ill be sad :(">
+        <ParticipantReference ref:participant="p" />
+      </Text>
+      <Text text="did you know that you can do text twice, or thrice, or maybe even infinitice!">
+        <ParticipantReference ref:participant="p" />
+      </Text>
+      <ToDialogueAction>
+        <DialogueReference ref:dialogue="2" />
+      </ToDialogueAction>
+    </EntryDialogue>
+  </DialogueTree>
+  
+</document>

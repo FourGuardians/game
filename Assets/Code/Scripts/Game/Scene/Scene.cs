@@ -1,4 +1,5 @@
 #pragma warning disable CS0649
+#pragma warning disable IDE0044
 
 using UnityEngine;
 

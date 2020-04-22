@@ -1,8 +1,7 @@
-using Fg.Entities;
 using GameAPI.Navigation;
 using UnityEngine;
 
-public class Player<TType> : GameEntity<TType> where TType : Player<TType>
+public partial class Player : GameEntity
 {
     [HideInInspector]
     public FillBar HealthBar;
@@ -91,41 +90,41 @@ public class Player<TType> : GameEntity<TType> where TType : Player<TType>
         Scene.Camera.GetComponent<CameraBoundsController>().Enabled = false;
     }
 
-    public new void Destroy()
+    public override void Destroy()
     {
         Destroy(HealthBar.gameObject);
         Destroy(InkBar.gameObject);
 
-        Player.ActivePlayer = null;
-        Player.ActivePlayerType = PlayerType.None;
+        ActivePlayer = null;
+        ActivePlayerType = PlayerType.None;
         
         UnmountCamera();
         base.Destroy();
     }
 }
 
-public static class Player
+public partial class Player
 {
-    public static dynamic ActivePlayer { get; set; }
+    public static Player ActivePlayer { get; set; }
     public static PlayerType ActivePlayerType { get; set; } = PlayerType.None;
 
-    public static Player<T> Summon<T>(PlayerType type) where T : Player<T>
+    public static Player Summon(PlayerType type)
     {
-        GameObject prefab = Resources.Load<GameObject>($"Prefabs/Players/{type}");
+    GameObject prefab = Resources.Load<GameObject>($"Players/{type}.prefab");
         PlayerMetadata meta = prefab.GetComponent<PlayerMetadata>();
 
-        GameObject obj = Object.Instantiate(prefab);
+        GameObject obj = Instantiate(prefab);
         obj.name = $"Player ({type})"; 
 
-        Player<T> player = obj.GetComponent<Player<T>>();
+        Player player = obj.GetComponent<Player>();
 
         // Health
-        player.HealthBar = Object.Instantiate(meta.HealthBar);
+        player.HealthBar = Instantiate(meta.HealthBar);
         player.HealthBar.gameObject.name = $"Health ({type})";
         player.HealthBar.transform.SetParent(Scene.Canvas.Overlay.transform, false);
 
         // Ink
-        player.InkBar = Object.Instantiate(meta.InkBar);
+        player.InkBar = Instantiate(meta.InkBar);
         player.InkBar.gameObject.name = $"Ink ({type})";
         player.InkBar.transform.SetParent(Scene.Canvas.Overlay.transform, false);
 

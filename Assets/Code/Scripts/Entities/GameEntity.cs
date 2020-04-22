@@ -2,7 +2,7 @@ using Fg.Entities;
 using GameAPI.Entities;
 using UnityEngine;
 
-public class GameEntity<TType> : Entity<TType>, IInkHolder, IAnimatedEntity where TType : GameEntity<TType>
+public abstract class GameEntity : Entity2D, IInkHolder, IAnimatedEntity
 {
     public int Ink { get; set; } = 20;
     public int MaxInk { get; set; } = 20;

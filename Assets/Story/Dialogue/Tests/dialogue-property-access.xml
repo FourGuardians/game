@@ -1,0 +1,38 @@
+<?xml version = "1.0"?>
+<?dialogue-tree 1.0?>
+
+<document xmlns:ref="http://arct.io/xml">
+  
+  <DialogueTree name="property access">
+    <Dialogue name="its a 3!!!">
+      <Text text="it was a :3">
+        <ParticipantReference ref:participant="p" />
+      </Text>
+      <ExitAction />
+    </Dialogue>
+    <Property name="prop1" />
+    <Property name="prop2" />
+    <Participant name="p" />
+    <EntryDialogue>
+      <Text text="testing props">
+        <ParticipantReference ref:participant="p" />
+      </Text>
+      <IfAction value="3">
+        <PropertyReference ref:property="prop1" />
+        <ToDialogueAction>
+          <DialogueReference ref:dialogue="its a 3!!!" />
+        </ToDialogueAction>
+        <IfAction value="2">
+          <PropertyReference ref:property="prop1" />
+          <ReturnAction value="2" />
+          <IfAction value="true">
+            <PropertyReference ref:property="prop2" />
+            <ReturnAction value="0" />
+            <ExitAction />
+          </IfAction>
+        </IfAction>
+      </IfAction>
+    </EntryDialogue>
+  </DialogueTree>
+  
+</document>

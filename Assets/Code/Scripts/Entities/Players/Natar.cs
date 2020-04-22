@@ -1,4 +1,4 @@
-public class Natar : Player<Natar>
+public class Natar : Player
 {
 
 }

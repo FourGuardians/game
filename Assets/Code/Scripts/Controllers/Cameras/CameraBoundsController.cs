@@ -15,7 +15,7 @@ public class CameraBoundsController : MonoBehaviour
 
     private PositionLock posLock;
     private Camera _camera;
-    private Vector3 pos => _camera.transform.localPosition;
+    private Vector3 Pos => _camera.transform.localPosition;
 
     public void Start()
     {
@@ -42,10 +42,10 @@ public class CameraBoundsController : MonoBehaviour
         (posLock.LockX, posLock.LockY) = Detect(CameraBounds(_camera), GridBounds(Bounds));
 
         if (!posLock.LockX)
-            _camera.transform.localPosition = new Vector3(NormalPosition.x, pos.y, pos.z);
+            _camera.transform.localPosition = new Vector3(NormalPosition.x, Pos.y, Pos.z);
 
         if (!posLock.LockY)
-            _camera.transform.localPosition = new Vector3(pos.x, NormalPosition.y, pos.z);
+            _camera.transform.localPosition = new Vector3(Pos.x, NormalPosition.y, Pos.z);
     }
     
     private (bool, bool) Detect(Vector4 cb, Vector4 gb) =>

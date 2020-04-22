@@ -1,0 +1,37 @@
+<?xml version = "1.0"?>
+<?dialogue-tree 1.0?>
+
+<document xmlns:ref="http://arct.io/xml">
+  
+  <DialogueTree name="action sets">
+    <ActionSet name="je">
+      <OptionsAction>
+        <Option name="d">
+          <ToActionSetAction>
+            <ActionSetReference ref:actions="j2" />
+          </ToActionSetAction>
+        </Option>
+      </OptionsAction>
+    </ActionSet>
+    <ActionSet name="j2">
+      <ToEntryAction />
+    </ActionSet>
+    <Participant name="p" />
+    <EntryDialogue>
+      <Text text="action sets">
+        <ParticipantReference ref:participant="p" />
+      </Text>
+      <OptionsAction>
+        <Option name="a">
+          <ToActionSetAction>
+            <ActionSetReference ref:actions="je" />
+          </ToActionSetAction>
+        </Option>
+        <Option name="exit">
+          <ExitAction />
+        </Option>
+      </OptionsAction>
+    </EntryDialogue>
+  </DialogueTree>
+  
+</document>

@@ -12,5 +12,6 @@ public class CommandLoader : MonoBehaviour
         console.RegisterCommand(new DebugCommand());
         console.RegisterCommand(new SummonPlayerCommand());
         console.RegisterCommand(new DestroyPlayerCommand());
+        console.RegisterCommand(new TestXmlCommand());
     }
 }

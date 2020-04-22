@@ -1,4 +1,4 @@
-public class Konara : Player<Konara>
+public class Konara : Player
 {
 
 }

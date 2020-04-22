@@ -25,25 +25,13 @@ public class SummonPlayerCommand : Command
             return;
         }
 
-        Transform transform = null;
-
-        if (type == PlayerType.Kierth)
-            transform = Player.Summon<Kierth>(type).transform;
-
-        if (type == PlayerType.Konara)
-            transform = Player.Summon<Konara>(type).transform;
-
-        if (type == PlayerType.Naratir)
-            transform = Player.Summon<Naratir>(type).transform;
-
-        if (type == PlayerType.Natar)
-            transform = Player.Summon<Natar>(type).transform;
+        Player player = Player.Summon(type);
 
         if (args.Count > 2) {
             float x = float.Parse(args[1]);
             float y = float.Parse(args[2]);
 
-            transform.position = new Vector3(x, y, transform.position.z);
+            player.transform.position = new Vector3(x, y, player.transform.position.z);
         }
 
         Log.Info($"{type} has been sucessfully summoned");

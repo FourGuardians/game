@@ -1,0 +1,60 @@
+<?xml version = "1.0"?>
+<?dialogue-tree 1.0?>
+
+<document xmlns:ref="http://arct.io/xml">
+  
+  <DialogueTree name="options">
+    <Dialogue name="whooooooooo">
+      <Text>
+        <ParticipantReference ref:participant="p" />
+      </Text>
+      <Text text="fff">
+        <ParticipantReference ref:participant="p" />
+      </Text>
+      <ExitAction />
+    </Dialogue>
+    <Dialogue name="log boop dialogggg">
+      <Text text="you have entered a lig boop!">
+        <ParticipantReference ref:participant="p" />
+      </Text>
+      <ToEntryAction />
+    </Dialogue>
+    <Participant name="p" />
+    <EntryDialogue>
+      <Text text="hi">
+        <ParticipantReference ref:participant="p" />
+      </Text>
+      <OptionsAction>
+        <Option name="stop right there">
+          <ExitAction />
+        </Option>
+        <Option name="next please">
+          <ToDialogueAction>
+            <DialogueReference ref:dialogue="whooooooooo" />
+          </ToDialogueAction>
+        </Option>
+        <Option name="repeat">
+          <ToEntryAction />
+        </Option>
+        <Option name="lig boop">
+          <ToDialogueAction>
+            <DialogueReference ref:dialogue="log boop dialogggg" />
+          </ToDialogueAction>
+        </Option>
+        <Option name="nest">
+          <OptionsAction>
+            <Option name="stop :(">
+              <ExitAction />
+            </Option>
+            <Option name="whoop">
+              <ToDialogueAction>
+                <DialogueReference ref:dialogue="whooooooooo" />
+              </ToDialogueAction>
+            </Option>
+          </OptionsAction>
+        </Option>
+      </OptionsAction>
+    </EntryDialogue>
+  </DialogueTree>
+  
+</document>
